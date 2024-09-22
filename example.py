@@ -6,7 +6,7 @@ import vizhu
 vizhu.user_search("drkrssll", False)
 
 # SnusProps is a Class that takes 3 string arguments
-props = vizhu.SnusProps(api_key, "email", "example@gmail.com")
+props = vizhu.SnusProps("your_api_key", "email", "example@gmail.com")
 
 # After passing through the arguments, call the snusbase() Method
-props.snusbase()
+props.snusbase(False)
