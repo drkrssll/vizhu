@@ -1,13 +1,15 @@
 # Vizhu
 Vizhu is a Python library designed for Open Source Intelligence (OSINT) investigations. It allows you to search for usernames across multiple social media platforms effortlessly.
 
+![Example](vizhu_example.png)
+
 ## Features
-> - Username Search: Check the availability or existence of a username across various social media platforms.
-> - Flexible Output: Choose to print results to the console or write them to a log file.
-> - Fast and Efficient: Leveraging Rust's performance for quick searches.
+- Username Search: Check the availability or existence of a username across various social media platforms.
+- Flexible Output: Choose to print results to the console or write them to a log file.
+- Fast and Efficient: Leveraging Rust's performance for quick searches.
 
 ## Installation
-To install Vizhu, ensure you have Python 3.7 or higher and Rust installed on your system.
+Ensure you have Python 3.7 or higher and Rust installed on your system.
 
 Clone the Repository
 ```sh
@@ -44,8 +46,8 @@ vizhu.user_search('some_username', True)
 ```
 
 ### Function Parameters
-> - username (str): The username you want to search for.
-> - write_to_file (bool):
+- username (str): The username you want to search for.
+- write_to_file (bool):
     > - False: Prints the search results to the console.
     > -  True: Writes the search results to a timestamped log file in the logs directory.
 
@@ -71,3 +73,4 @@ vizhu.user_search('some_username', True)
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request on the GitHub repository.
+
