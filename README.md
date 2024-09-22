@@ -1,7 +1,7 @@
 # Vizhu
 Vizhu is a Python library designed for Open Source Intelligence (OSINT) investigations. It allows you to search for usernames across multiple social media platforms effortlessly.
 
-![Example](vizhu_example.png)
+![Example](vizhu.png)
 
 ## Features
 - Username Search: Check the availability or existence of a username across various social media platforms.
