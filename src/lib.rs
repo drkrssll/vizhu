@@ -5,6 +5,30 @@ use reqwest::blocking::Client;
 use std::fs::{self, OpenOptions};
 use std::io::Write;
 
+#[pyclass]
+struct SnusProps {
+    api_key: String,
+    search_type: String,
+    search_param: String,
+}
+
+#[pymethods]
+impl SnusProps {
+    #[new]
+    fn new(api_key: String, search_type: String, search_param: String) -> Self {
+        SnusProps {
+            api_key,
+            search_type,
+            search_param,
+        }
+    }
+
+    fn snusbase(&self) -> PyResult<()> {
+        todo();
+        Ok(())
+    }
+}
+
 #[pyfunction]
 fn user_search(username: &str, write_to_file: bool) -> PyResult<()> {
     let client = Client::new();
@@ -25,7 +49,6 @@ fn user_search(username: &str, write_to_file: bool) -> PyResult<()> {
     let date_time = Local::now().format("%Y%m%d_%H%M%S").to_string();
     let filename = format!("logs/user_search_{}.txt", date_time);
 
-    // Create logs directory if it doesn't exist
     fs::create_dir_all("logs")
         .map_err(|e| PyErr::new::<PyException, _>(format!("Request Error: {}", e)))?;
 
@@ -55,5 +78,7 @@ fn user_search(username: &str, write_to_file: bool) -> PyResult<()> {
 #[pymodule]
 fn vizhu(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(user_search, m)?)?;
+    m.add_class::<SnusProps>()?;
+
     Ok(())
 }
