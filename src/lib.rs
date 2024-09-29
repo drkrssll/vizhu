@@ -34,30 +34,30 @@ impl From<ErrorHandling> for PyErr {
 }
 
 #[pyclass]
-struct SnusProps {
+struct SnusBase {
     api_key: String,
     search_type: String,
     search_param: String,
 }
 
 #[pymethods]
-impl SnusProps {
+impl SnusBase {
     #[new]
     fn new(api_key: String, search_type: String, search_param: String) -> Self {
-        SnusProps {
+        SnusBase {
             api_key,
             search_type,
             search_param,
         }
     }
 
-    fn snusbase(&self, output_to_file: bool) -> PyResult<()> {
+    fn send(&self, output_to_file: bool) -> PyResult<()> {
         self.snusbase_internal(output_to_file)?;
         Ok(())
     }
 }
 
-impl SnusProps {
+impl SnusBase {
     fn snusbase_internal(&self, output_to_file: bool) -> Result<(), ErrorHandling> {
         let client = Client::new();
 
@@ -147,7 +147,7 @@ fn user_search(username: &str, write_to_file: bool) -> PyResult<()> {
 #[pymodule]
 fn vizhu(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(user_search, m)?)?;
-    m.add_class::<SnusProps>()?;
+    m.add_class::<SnusBase>()?;
 
     Ok(())
 }
